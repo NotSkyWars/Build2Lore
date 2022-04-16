@@ -1,0 +1,6 @@
+name: Build2Lore
+main: de.byteroyal.main.Main
+version: 1.1
+commands:
+  getTool:
+  addLore:
