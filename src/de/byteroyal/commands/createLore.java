@@ -54,7 +54,7 @@ public class createLore implements CommandExecutor {
                     List<String> lore = new ArrayList<>();
                     for (int x = xmin; x <= xmax; x++) {
                         String line = "";
-                        for (int z = zmin; z <= zmax; z++) {
+                        for (int z = zmax; z >= zmin; z--) {
                             Block block = player.getWorld().getBlockAt(x, pos1.getBlockY(), z);
                             line += Block2Color.valueOf(block.getType().name() + "_" + block.getData()).getCode() + "§l⬛";
                         }
