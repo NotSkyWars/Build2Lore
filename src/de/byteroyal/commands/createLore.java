@@ -3,6 +3,7 @@ package de.byteroyal.commands;
 import de.byteroyal.itembuilder.ItemBuilder;
 import de.byteroyal.main.Main;
 import de.byteroyal.utils.Block2Color;
+import org.apache.commons.lang3.EnumUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -56,7 +57,12 @@ public class createLore implements CommandExecutor {
                         String line = "";
                         for (int z = zmax; z >= zmin; z--) {
                             Block block = player.getWorld().getBlockAt(x, pos1.getBlockY(), z);
-                            line += Block2Color.valueOf(block.getType().name() + "_" + block.getData()).getCode() + "§l⬛";
+                            if (EnumUtils.isValidEnum(Block2Color.class, block.getType().name() + "_" + block.getData()))
+                                line += Block2Color.valueOf(block.getType().name() + "_" + block.getData()).getCode() + "§l⬛";
+                            else {
+                                player.sendMessage(Main.getInstance().getPrefix() + "§cAction failed! Some blocks are empty in the selection!");
+                                return false;
+                            }
                         }
                         lore.add(line);
                     }

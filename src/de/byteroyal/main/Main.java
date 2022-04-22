@@ -1,6 +1,7 @@
 package de.byteroyal.main;
 
 import de.byteroyal.commands.createLore;
+import de.byteroyal.commands.getBlocks;
 import de.byteroyal.commands.getTool;
 import de.byteroyal.listeners.Interact;
 import de.byteroyal.listeners.Join;
@@ -42,12 +43,16 @@ public class Main extends JavaPlugin {
         PluginManager manager = Bukkit.getPluginManager();
         manager.registerEvents(new Interact(),this);
         manager.registerEvents(new Join(),this);
+        manager.registerEvents(new getBlocks(),this);
 
         getCommand("getTool").setExecutor(new getTool());
         getCommand("getTool").setDescription("Will give you the tools to mark your artwork!");
 
         getCommand("addLore").setExecutor(new createLore());
         getCommand("addLore").setDescription("Will set the current artwork as a lore onto your item!");
+
+        getCommand("getBlocks").setExecutor(new getBlocks());
+
         System.out.println(Logger.OMLINE.getLogger());
 
     }
